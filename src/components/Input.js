@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import WeatherCity from './WeatherCity'
 class Input extends Component {
     constructor(props) {
         super(props);
@@ -25,7 +26,7 @@ class Input extends Component {
                     <input type="text" value={this.state.cityName} placeholder="Enter City name" onChange={this.handelChange}/>
                     <input type="submit" value="Submit"/>
                 </form>
-               
+               <WeatherCity city={this.state.cityName}/>
             </div>
          );
     }
