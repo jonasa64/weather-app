@@ -24,11 +24,13 @@ let headers = {
 
  
      fetch5DayWeather = cityName => {
-
+        const options = this.makeFetchOptions("GET")
+       return fetch('', options).then(handleHttpErrors)
      }     
       
      fetch1DayWeather = cityName => {
-         
+        const options = this.makeFetchOptions("GET")
+       return fetch('', options).then(handleHttpErrors)
     }
 
 
