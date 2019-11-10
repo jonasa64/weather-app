@@ -23,8 +23,13 @@ let headers = {
     }
 
  
-          
-          
+     fetch5DayWeather = cityName => {
+
+     }     
+      
+     fetch1DayWeather = cityName => {
+         
+    }
 
 
 
