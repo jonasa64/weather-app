@@ -1,18 +1,36 @@
-import React, {useState} from 'react'
-import facade from '../api/ApiFacade'
+import React, {useState, useEffect} from 'react'
+import useWeatherApi from "../hooks/useWeatherApi";
+import DisplayWeather from "./DisplayWeather";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const InputCityName = () => {
-    const [city, SetCity] = useState('')
-   const onKeyDownHandler = (e) => {
-        if(e.keyCode === 13 && e.shiftKey == false){
-            console.log("you pressed enter");
+    const [city, setCity] = useState('')
+    const [isSubmitted, setIsSubmitted] = useState(false)
+    const {data, error} = useWeatherApi(city, isSubmitted);
+
+
+    useEffect(() => {
+        const handleKeydown = event => {
+            const {keyCode, target} = event;
+            if (keyCode === 13) {
+                setIsSubmitted(true);
+                setCity(target.value.trim())
+            }
         }
-    }
+
+        window.addEventListener('keydown', handleKeydown);
+        return () => window.removeEventListener('keydown', handleKeydown);
+    }, [setCity])
+
     return (
-        <div>
-            <input type="text" name="city" value={city} onChange={() => SetCity(e.target.value)} onKeyDown={(e) => onKeyDownHandler(e)}/>
+        <div className="form-group mt-4">
+            <label htmlFor="name">Enter city name</label>
+            <input className="form-control" id="name" type="text" name="city" value={city}
+                   onChange={event => setCity(event.target.value)}/>
+            {error.length > 0 && <div className="alert alert-danger mt-4">{error}</div>}
+            {data.length > 0 && <DisplayWeather data={data}/>}
         </div>
-        
+
     )
 }
 
