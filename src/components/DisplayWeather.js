@@ -18,7 +18,7 @@ const DisplayWeather = ({data}) => {
 
                 {weather.map((weather, index) => (
                     <div key={index}>
-                        <p className="card-text text-center">{weather.description}</p>
+                        <p className="card-text text-center display-3">{weather.description}</p>
                     </div>
                 ))}
 

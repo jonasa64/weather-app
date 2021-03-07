@@ -18,7 +18,6 @@ const useWeatherApi = (cityName, isSubmitted) => {
                 } else {
                     setError(responseData.message)
                 }
-                console.log(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${API_KEY}&units=metric`)
             } catch (error) {
                 setError('failed to fetch data. City can not be empty or mabye not suported by openweatermap api')
             }
