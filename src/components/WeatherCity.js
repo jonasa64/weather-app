@@ -15,6 +15,8 @@ const InputCityName = () => {
             if (keyCode === 13) {
                 setIsSubmitted(true);
                 setCity(target.value.trim())
+                setIsSubmitted(false)
+                setCity('')
             }
         }
 
