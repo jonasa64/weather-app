@@ -1,4 +1,4 @@
-import react, {useState, useEffect} from 'react';
+import  {useState, useEffect} from 'react';
 
 const useIcon = (rangeId) => {
     const [icon, setIcon] = useState('')
@@ -25,8 +25,10 @@ const useIcon = (rangeId) => {
             case rangeId >= 801 && rangeId <= 804:
                 setIcon('wi-day-fog');
                 break;
+            default:
+                setIcon('')
         }
-    }, [])
+    }, [rangeId])
 
     return {icon}
 }
